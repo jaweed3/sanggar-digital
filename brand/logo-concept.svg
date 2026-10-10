@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-labelledby="title desc">
+  <title id="title">Sanggar Digital logo concept</title>
+  <desc id="desc">Three flowing lines form a dancing human figure beside the Sanggar Digital wordmark.</desc>
+  <rect width="800" height="300" rx="28" fill="#FAF7F0"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="145" cy="65" r="18" fill="#D99A2B" stroke="none"/>
+    <path d="M145 93 C126 112 125 140 143 158 C163 179 184 165 184 143" stroke="#087E8B" stroke-width="13"/>
+    <path d="M141 105 C104 98 79 116 58 143" stroke="#17324D" stroke-width="13"/>
+    <path d="M151 106 C183 89 213 95 236 119" stroke="#D99A2B" stroke-width="13"/>
+    <path d="M143 157 C123 188 119 216 105 242" stroke="#087E8B" stroke-width="13"/>
+    <path d="M154 157 C177 188 197 206 224 222" stroke="#17324D" stroke-width="13"/>
+  </g>
+  <text x="285" y="140" font-family="Arial, sans-serif" font-size="55" font-weight="700" fill="#17324D">SANGGAR</text>
+  <text x="285" y="198" font-family="Arial, sans-serif" font-size="55" font-weight="700" fill="#087E8B">DIGITAL</text>
+  <text x="288" y="237" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" fill="#D99A2B">GERAK TRADISI, HIDUP KEMBALI.</text>
+</svg>

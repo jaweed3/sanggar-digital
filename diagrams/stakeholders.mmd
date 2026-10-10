@@ -1,0 +1,10 @@
+flowchart LR
+    U[Pelajar / User] -->|pilih tari, latihan via kamera| APP[Web App Sanggar Digital]
+    P[Penari / Sanggar] -->|upload video, metadata, makna gerakan| APP
+    C[Kurator / Komunitas] -->|review, upvote, flag| APP
+    G[Guru / Institusi Pendidikan] -->|pakai reference untuk kelas| APP
+    APP -->|pose tracking + feedback| U
+    APP -->|reference tervalidasi| U
+    APP -->|atribusi & konteks budaya| P
+    APP --> DATA[(Dataset Pose Tari Indonesia)]
+    APP --> IMPACT[Regenerasi, edukasi, dan visibilitas budaya]

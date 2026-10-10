@@ -1,0 +1,49 @@
+flowchart TB
+    subgraph Client[Client Layer]
+        WEB[Next.js / React Web App]
+        CAM[Camera Input]
+        UI[Learning UI + Upload UI]
+    end
+
+    subgraph Edge[On-device AI Layer]
+        PM[MediaPipe Pose Landmarker]
+        NORM[Pose Normalization]
+        SCORE[Joint Angle + DTW Scoring]
+        FB[Real-time Feedback Overlay]
+    end
+
+    subgraph Backend[Backend Layer]
+        AUTH[Auth]
+        API[Reference / Progress API]
+        MOD[Moderation + Quality Gate]
+    end
+
+    subgraph Data[Supabase / Firebase]
+        DB[(Users, Dances, References, Scores)]
+        STORE[(Video + Pose Data Storage)]
+    end
+
+    WEB --> CAM
+    WEB --> UI
+    CAM --> PM
+    PM --> NORM
+    NORM --> SCORE
+    SCORE --> FB
+    FB --> WEB
+    UI --> API
+    API --> AUTH
+    API --> MOD
+    API --> DB
+    API --> STORE
+    STORE --> MOD
+    MOD --> DB
+    DB --> WEB
+
+    classDef client fill:#dbeafe,stroke:#2563eb,color:#111827
+    classDef ai fill:#ede9fe,stroke:#7c3aed,color:#111827
+    classDef backend fill:#dcfce7,stroke:#16a34a,color:#111827
+    classDef data fill:#ccfbf1,stroke:#0f766e,color:#111827
+    class WEB,CAM,UI client
+    class PM,NORM,SCORE,FB ai
+    class AUTH,API,MOD backend
+    class DB,STORE data
