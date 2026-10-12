@@ -1,76 +1,36 @@
-# Sanggar Digital
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Gerak Tradisi, Hidup Kembali.
+## Getting Started
 
-Sanggar Digital is a hackathon concept for digitally regenerating Indonesian traditional dance. Dancers and sanggars can contribute movement references, while learners practice through a camera and receive real-time pose feedback.
+First, run the development server:
 
-## Why this exists
-
-Traditional dance knowledge is often concentrated in sanggars and senior dancers. Ordinary video documentation preserves footage, but does not give learners interactive feedback. Sanggar Digital connects cultural knowledge holders with a digital learning experience without reducing the tradition to generic dance scoring.
-
-## MVP
-
-1. Real-time AI Coach
-   - Select a dance or movement.
-   - Practice through the camera.
-   - Track pose on-device with MediaPipe Pose Landmarker.
-   - Compare key joint angles and timing against a reference.
-   - Show score, overlay, and specific feedback.
-
-2. Crowdsource Reference
-   - Dancers, sanggars, or advanced users upload movement videos.
-   - Store pose data and cultural metadata.
-   - Apply a basic quality gate, attribution, upvote, and flag flow.
-
-3. Collaborative Practice (post-MVP)
-   - Prefer asynchronous challenges or invite-only duets before live stranger matching.
-   - The product goal is learning together, not building an unmoderated social video app.
-
-## Hackathon scope
-
-Start with one or two dances or movement sequences. A small, high-quality reference set is more valuable than a large library with unreliable scoring.
-
-## Architecture
-
-```mermaid
-flowchart TB
-    WEB[Next.js / React] --> CAM[Camera]
-    CAM --> PM[MediaPipe Pose Landmarker]
-    PM --> SCORE[Joint-angle + timing scoring]
-    SCORE --> UI[Feedback overlay]
-    WEB --> API[Supabase/Firebase API]
-    API --> DATA[(References, users, progress, video storage)]
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Full diagrams are in `diagrams/`.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Repository layout
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- `docs/` — PDF and editable proposal
-- `diagrams/` — Mermaid source and rendered PNG diagrams
-- `brand/` — brand direction and editable logo concept
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Brand direction
+## Learn More
 
-Recommended name: Sanggar Digital  
-Tagline: Gerak Tradisi, Hidup Kembali.
+To learn more about Next.js, take a look at the following resources:
 
-The logo in `brand/logo-concept.svg` is an early concept: a flowing human figure with joint-like accents. It is not a final cultural identity and should be reviewed with dancers or sanggar partners before public use.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Important product constraints
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- Get permission and attribution for contributed videos and movement references.
-- Do not claim that a simple pose score represents absolute technical or cultural correctness.
-- Keep cultural context attached to the movement reference.
-- Prioritize a reliable demo over feature count.
-- Treat moderation and user safety as requirements for any social/duet feature.
+## Deploy on Vercel
 
-## Status
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Concept and hackathon proposal package. Product implementation is not included in this repository yet.
-
-## License
-
-The source files in this repository are released under the MIT License. See [LICENSE](LICENSE).
-
-The license does not remove the need to obtain consent, attribution, or third-party rights for cultural materials, videos, music, datasets, logos, or contributed content. Those materials may have separate terms.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
