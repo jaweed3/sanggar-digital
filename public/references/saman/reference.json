@@ -1,0 +1,44 @@
+{
+  "id": "saman-seated-01",
+  "dance": "Tari Saman",
+  "label": "Saman-style seated movement (provisional)",
+  "status": "prototype_only",
+  "confidence": "unverified",
+  "source": {
+    "file": "videos/Screen Recording 2026-10-13 at 6.33.01 AM.mov",
+    "derived_clip": "public/references/saman/saman-costume-candidate.mp4",
+    "clip_start_seconds": 5,
+    "clip_duration_seconds": 40,
+    "rights_status": "user-provided; public/demo permission not yet confirmed"
+  },
+  "movement": {
+    "description": "seated upper-body and hand sequence",
+    "body_scope": ["head", "shoulders", "elbows", "wrists", "torso"],
+    "lower_body_score": false,
+    "notes": "Feet and lower legs are concealed by the seated pose. Do not label as canonical Saman without practitioner validation."
+  },
+  "planned_keyframes": [
+    { "time_seconds": 0.0, "label": "hands_near_lap" },
+    { "time_seconds": 8.0, "label": "arms_raised" },
+    { "time_seconds": 16.0, "label": "palms_together_or_opening" },
+    { "time_seconds": 28.0, "label": "hands_near_face_or_chest" }
+  ],
+  "alternatives": [
+    {
+      "id": "saman-solo-upper-body-01",
+      "label": "solo kneeling upper-body movement (provisional)",
+      "derived_clip": "public/references/saman/saman-solo-candidate.mp4",
+      "source_file": "videos/data 1.mp4",
+      "clip_start_seconds": 30,
+      "clip_duration_seconds": 35
+    },
+    {
+      "id": "saman-inspired-gesture-01",
+      "label": "Saman-inspired seated gesture (unverified)",
+      "derived_clip": "public/references/saman/gesture-01.mp4",
+      "source_file": "videos/short 1.mp4",
+      "clip_start_seconds": 13,
+      "clip_duration_seconds": 3.23
+    }
+  ]
+}
