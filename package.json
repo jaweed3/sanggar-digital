@@ -2,6 +2,7 @@
   "name": "sanggar-app-scaffold",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-2.0-only",
   "scripts": {
     "dev": "bunx --bun next dev",
     "build": "bunx --bun next build",

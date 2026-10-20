@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sanggar Digital
 
-## Getting Started
+Prototipe web belajar tari tradisional dengan umpan balik pose real-time di browser. Saat ini latihan yang aktif adalah **Saman**; pemrosesan pose berjalan di perangkat menggunakan kamera dan MediaPipe.
 
-First, run the development server:
+## Cara menggunakan
+
+Prasyarat: [Bun](https://bun.sh) dan browser modern dengan kamera.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000), pilih **Saman → Mulai latihan**, izinkan akses kamera, ikuti kalibrasi, lalu ikuti gerakan referensi. Skor terbaik disimpan di `localStorage` browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Perintah lain: `bun run build` untuk build, `bun run start` untuk menjalankan hasil build, `bun run lint` untuk lint, `bun run typecheck` untuk cek tipe, dan `bun run golden` untuk membandingkan scorer TypeScript dengan Python (`python3`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Batasan
 
-## Learn More
+- Ini prototipe, bukan produk siap produksi. Pendet dan Remo masih berupa katalog; sesi latihan yang tersedia hanya Saman.
+- Penilaian masih eksperimental: memakai pose tubuh bagian atas, satu orang, dan ambang tier belum dikalibrasi dengan data penari.
+- Skor adalah panduan latihan, bukan penilaian mutlak atas kebenaran gerak atau konteks budaya.
+- Belum ada backend, akun, sinkronisasi skor, atau moderasi. Skor terbaik hanya tersimpan di browser yang digunakan.
+- Akurasi dan kelancaran dipengaruhi pencahayaan, posisi kamera, perangkat, dan ketersediaan GPU (CPU digunakan sebagai fallback).
 
-To learn more about Next.js, take a look at the following resources:
+## Dokumentasi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Struktur proyek dan arsitektur](docs/STRUCTURE.md)
+- [Panduan kontribusi](CONTRIBUTING.md)
+- [Lisensi GPL-2.0](LICENSE)
