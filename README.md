@@ -1,6 +1,10 @@
-# Sanggar Digital
+<div align="center">
+  <img src="logo.png" alt="Logo Sanggar Digital" width="180" />
+  <h1>Sanggar Digital</h1>
+  <p>Belajar tari tradisional dengan umpan balik pose real-time.</p>
+</div>
 
-Prototipe web belajar tari tradisional dengan umpan balik pose real-time di browser. Saat ini latihan yang aktif adalah **Saman**; pemrosesan pose berjalan di perangkat menggunakan kamera dan MediaPipe.
+Prototipe web belajar tari tradisional di browser. Saat ini latihan yang aktif adalah **Saman**; pemrosesan pose berjalan di perangkat menggunakan kamera dan MediaPipe.
 
 ## Cara menggunakan
 
