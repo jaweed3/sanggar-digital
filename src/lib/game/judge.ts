@@ -1,18 +1,15 @@
 // Penilaian segmen — murni, tanpa DOM/rAF. Dipakai loop main + gampang diuji.
 import { getPose, type TariReference } from "../pose/reference";
 import { bonesFromKeypoints, judgeWindow, scorePose, tierFor, type Tier } from "../pose/scorer";
+import { type UpperKp } from "../pose/keypoints";
 import type { LaneMark } from "./lane";
 
 export interface Verdict { id: string; t: number; score: number; tier: Tier; }
 export interface ScoredFrame { t: number; score: number; }
-export type UpperKp = Record<string, [number, number]>;
 
-/** 7 keypoint tubuh-atas dari landmark 0..1 (indeks MediaPipe). */
-export function upperKpFromLandmarks(lm: Array<{ x: number; y: number }>): UpperKp | null {
-  if (!lm || lm.length < 17) return null;
-  const g = (i: number): [number, number] => [lm[i].x, lm[i].y];
-  return { nose: g(0), L_shoulder: g(11), R_shoulder: g(12), L_elbow: g(13), R_elbow: g(14), L_wrist: g(15), R_wrist: g(16) };
-}
+// Re-export supaya app tidak perlu menembus ke lib/pose langsung.
+export { upperKpFromLandmarks, type UpperKp } from "../pose/keypoints";
+export { tierFor } from "../pose/scorer";
 
 /** Normalisasi kontrak: origin tengah-bahu, skala lebar bahu frame. */
 export function normalizeKp(ukp: UpperKp): UpperKp {

@@ -6,7 +6,7 @@
 // - Frame kamera TIDAK di-mirror untuk landmark; mirror hanya saat menggambar.
 
 import { OneEuroBank } from "./oneEuro";
-import type { Landmark } from "./types";
+import { POSE_FILTER_BETA, POSE_FILTER_DCUTOFF, POSE_FILTER_MINCUTOFF, type Landmark } from "./types";
 
 export interface EngineFrame {
   landmarks: Landmark[] | null;
@@ -20,7 +20,7 @@ type Landmarker = {
 
 export class PoseEngine {
   private landmarker: Landmarker | null = null;
-  private bank = new OneEuroBank(1.0, 0.05, 1.0);
+  private bank = new OneEuroBank(POSE_FILTER_MINCUTOFF, POSE_FILTER_BETA, POSE_FILTER_DCUTOFF);
   private lastVideoTime = -1;
   ready = false;
 

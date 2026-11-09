@@ -1,24 +1,12 @@
 // Renderer siluet tubuh-atas (gaya mockup: putih, garis tebal berujung bulat).
 // SATU fungsi gambar dipakai untuk user DAN pictogram referensi.
 // Kaki tidak digambar: Saman berlutut, dan kontrak data mengecualikan pinggul/kaki.
+//
+// Pemetaan keypoint & indeks MediaPipe: ../pose/keypoints.ts (sumber tunggal).
 
-export type Pt = { x: number; y: number };
-export type UpperBodyPts = {
-  nose: Pt;
-  L_shoulder: Pt;
-  R_shoulder: Pt;
-  L_elbow: Pt;
-  R_elbow: Pt;
-  L_wrist: Pt;
-  R_wrist: Pt;
-};
+import { type Pt, type UpperBodyPts } from "./keypoints";
 
-/** Landmark user (0..1) → piksel kanvas. */
-export function userToPx(lm: Array<{ x: number; y: number }>, W: number, H: number): UpperBodyPts | null {
-  const g = (i: number): Pt => ({ x: lm[i].x * W, y: lm[i].y * H });
-  if (lm.length < 17) return null;
-  return { nose: g(0), L_shoulder: g(11), R_shoulder: g(12), L_elbow: g(13), R_elbow: g(14), L_wrist: g(15), R_wrist: g(16) };
-}
+export type { Pt, UpperBodyPts, UpperKp } from "./keypoints";
 
 /** Gambar siluet. mirror=true untuk display kamera depan (landmark tetap asli). */
 export function drawUpperBody(

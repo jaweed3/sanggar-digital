@@ -1,7 +1,8 @@
 // TimelineRenderer: pre-render tiap pose jadi sprite, lalu gambar lane.
 // x_i = x_target + (t_i - now) * v. Canvas 2D saja, tanpa lib game.
 
-import { drawUpperBody, type UpperBodyPts } from "../pose/silhouette";
+import { drawUpperBody } from "../pose/silhouette";
+import { mapUpperKp, type UpperKp } from "../pose/keypoints";
 import { TIER_COLORS, GAME_COLORS } from "./theme";
 import type { LaneMark } from "./lane";
 import { laneX } from "./lane";
@@ -11,15 +12,15 @@ export interface Sprite {
   canvas: HTMLCanvasElement;
 }
 
-function ptsFromKp(kp: Record<string, [number, number]>, scalePx: number): UpperBodyPts {
+/** Keypoint pose referensi → piksel di dalam kanvas sprite. */
+function ptsFromKp(kp: UpperKp, scalePx: number): ReturnType<typeof mapUpperKp> {
   const c = 48;
   const cy = 62;
-  const g = (k: string): { x: number; y: number } => ({ x: c + kp[k][0] * scalePx, y: cy + kp[k][1] * scalePx });
-  return { nose: g("nose"), L_shoulder: g("L_shoulder"), R_shoulder: g("R_shoulder"), L_elbow: g("L_elbow"), R_elbow: g("R_elbow"), L_wrist: g("L_wrist"), R_wrist: g("R_wrist") };
+  return mapUpperKp(kp, (v) => ({ x: c + v[0] * scalePx, y: cy + v[1] * scalePx }));
 }
 
 /** Pre-render sprite 96x120 per pose. Dipanggil sekali setelah referensi dimuat. */
-export function prerenderSprites(poses: Array<{ id: string; keypoints: Record<string, [number, number]> }>): Sprite[] {
+export function prerenderSprites(poses: Array<{ id: string; keypoints: UpperKp }>): Sprite[] {
   return poses.map((p) => {
     const canvas = document.createElement("canvas");
     canvas.width = 96;
@@ -86,7 +87,7 @@ export function drawLane(
     // Chip latar pictogram.
     ctx.save();
     ctx.globalAlpha = judged ? 0.35 : 1;
-    ctx.fillStyle = m.kind === "event" ? "rgba(246,197,67,.18)" : "rgba(255,255,255,.08)";
+    ctx.fillStyle = m.kind === "event" ? "rgba(217,154,43,.20)" : "rgba(255,255,255,.07)";
     ctx.beginPath();
     ctx.roundRect(x - 28, baseY - 104, 56, 68, 12);
     ctx.fill();

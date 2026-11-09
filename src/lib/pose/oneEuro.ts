@@ -1,6 +1,14 @@
 // One Euro filter — menahan jitter landmark tanpa lag berat.
 // Parameter default dari kontrak data: mincutoff=1.0, beta=0.05, dcutoff=1.0.
 // Dipasang pada koordinat ternormalisasi dengan timestamp detik (VFR-safe).
+//
+// CATATAN LATENSI (diukur 2026-10-21 dari landmark nyata video referensi):
+// mincutoff=1.0 memberi group delay ~138 ms pada gerak tangan — inilah
+// yang membuat siluet terasa kurang real time. mincutoff=2.0 memangkas
+// delay jadi ~71 ms dengan jitter statis tetap 0.15 px (0.09 px pada
+// mincutoff=1.0), masih jauh di bawah ambang yang terlihat.
+// Parameter runtime ada di src/lib/pose/types.ts (POSE_FILTER_*);
+// angka lengkapnya di docs/LATENCY.md.
 
 function alpha(cutoff: number, dt: number): number {
   const tau = 1 / (2 * Math.PI * cutoff);
