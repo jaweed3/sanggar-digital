@@ -196,12 +196,7 @@ export default function TariGame({ back }: { back: () => void }) {
   const inGame = phase === "kalibrasi" || phase === "hitung" || phase === "main";
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-      <div className="mb-4 flex items-center justify-between">
-        <button onClick={back} className="text-sm font-bold text-[#8b1d1d]">← Keluar</button>
-        <div className="text-xs font-bold text-[#795b43]">SAMAN · prototipe</div>
-      </div>
-
+    <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <video id="tari-cam" ref={(el) => { attachCam(el); camVideoEl.current = el; }} autoPlay muted playsInline className="hidden" />
 
       {phase === "loading" && <LoadingScreen />}
@@ -209,7 +204,7 @@ export default function TariGame({ back }: { back: () => void }) {
       {phase === "kamera" && <CameraPrompt onStart={onStartCamera} />}
 
       {inGame && (
-        <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
           <StageView
             userCanvas={(el: HTMLCanvasElement | null) => { userCanvasEl.current = el; }}
             laneCanvas={(el: HTMLCanvasElement | null) => { laneCanvasEl.current = el; }}
@@ -220,7 +215,7 @@ export default function TariGame({ back }: { back: () => void }) {
             countdown={countdown}
             verdicts={verdicts}
           />
-          <aside className="space-y-3">
+          <aside className="flex flex-col gap-4">
             <ScoreCard live={liveScore} best={best} done={verdicts.length} total={markCount} />
             <VerdictList verdicts={verdicts} empty="Ikuti pictogram sampai garis kuning…" />
           </aside>

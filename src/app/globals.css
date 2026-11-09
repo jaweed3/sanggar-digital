@@ -1,13 +1,151 @@
 @import "tailwindcss";
 
-:root { --background: #fffaf0; --foreground: #3b2314; }
-@theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --font-sans: Arial, Helvetica, sans-serif; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
-button, a { transition: all .2s ease; }
-button:focus-visible, a:focus-visible { outline: 3px solid #f6c543; outline-offset: 3px; }
-@keyframes count-pop { 0% { transform: scale(.6); opacity: 0; } 30% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+/* ==========================================================================
+   Token desain — diturunkan dari brand/BRAND_DIRECTION.md
+   Palet utama: Deep Indigo (struktur/teks), Nusantara Teal (aksi utama),
+   Warm Gold (aksen budaya), Terracotta (aksen manusia), Soft Ivory (latar).
+   ========================================================================== */
+
+@theme {
+  /* Warna brand */
+  --color-indigo: #17324d;
+  --color-indigo-soft: #2c4a68;
+  --color-teal: #087e8b;
+  --color-teal-dark: #066570;
+  --color-gold: #d99a2b;
+  --color-gold-soft: #f2d9a4;
+  --color-terracotta: #c9684a;
+  --color-ivory: #faf7f0;
+  --color-ivory-deep: #f2ede1;
+
+  /* Netral turunan ivory */
+  --color-line: #e4dccb;
+  --color-ink-muted: #55697d;
+  --color-surface: #ffffff;
+
+  /* Font — diisi next/font (Inter untuk body, Plus Jakarta Sans untuk heading) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor (#jelajahi) jangan tertutup header lengket. */
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-indigo);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease,
+    box-shadow .18s ease, transform .18s ease, opacity .18s ease;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Komponen dasar (kelas biasa, bukan @utility — Tailwind 4 v4
+       mengscan file sumber untuk class utility, tapi kelas komponen
+       biasanya ditulis sebagai CSS biasa agar pasti ter-generate) --- */
+
+/* Kartu dengan garis lembut — gaya dasar produk. */
+.card {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 1.25rem;
+}
+
+/* Tombol aksi utama — teal adalah warna aksi utama menurut brand. */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-teal);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.875rem 1.75rem;
+  box-shadow: 0 4px 0 var(--color-teal-dark);
+}
+
+.btn-primary:hover {
+  background: var(--color-teal-dark);
+  box-shadow: 0 2px 0 var(--color-teal-dark);
+  transform: translateY(2px);
+}
+
+/* Tombol sekunder — garis, tanpa isi. */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-indigo);
+  color: var(--color-indigo);
+  font-weight: 700;
+  padding: 0.875rem 1.75rem;
+}
+
+.btn-ghost:hover {
+  background: var(--color-indigo);
+  color: #fff;
+  border-color: var(--color-indigo);
+}
+
+/* Label kecil di atas judul bagian. */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Judul bagian — font display (Plus Jakarta Sans), bukan serif. */
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-indigo);
+}
+
+/* --- Animasi --- */
+@keyframes count-pop {
+  0% { transform: scale(.6); opacity: 0; }
+  30% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
 .count-pop { animation: count-pop .5s ease-out; }
-@keyframes verdict-pop { 0% { transform: translateY(-6px) scale(.92); opacity: 0; } 100% { transform: none; opacity: 1; } }
+
+@keyframes verdict-pop {
+  0% { transform: translateY(-6px) scale(.92); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
 .verdict-pop { animation: verdict-pop .25s ease-out; }
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-soft { animation: float-soft 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .count-pop, .verdict-pop, .float-soft { animation: none; }
+  button, a { transition: none; }
+}
