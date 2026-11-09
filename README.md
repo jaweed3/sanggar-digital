@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="Logo Sanggar Digital" width="180" />
+  <img src="public/logo.png" alt="Logo Sanggar Digital" width="180" />
   <h1>Sanggar Digital</h1>
   <p>Belajar tari tradisional dengan umpan balik pose real-time.</p>
 </div>

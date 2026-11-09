@@ -3,7 +3,7 @@
 // Keluar non-zero bila ada selisih — itu berarti validasi Python
 // tidak lagi berlaku untuk app yang dinilai juri.
 
-import { scorePose, type BoneMap } from "../src/lib/pose/scorer";
+import { scorePose, type BoneMap } from "../lib/pose/scorer";
 import { readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -63,7 +63,7 @@ const tsResults = cases.map((c) => scorePose(c.userBones, c.refBones, c.weights,
 const tmp = join(tmpdir(), `golden-cases-${Date.now()}.json`);
 writeFileSync(tmp, JSON.stringify(cases));
 
-const proc = Bun.spawnSync(["python3", "scripts/scorer_mirror.py", tmp], { cwd: process.cwd() });
+const proc = Bun.spawnSync(["python3", "src/scripts/scorer_mirror.py", tmp], { cwd: process.cwd() });
 const stderr = proc.stderr.toString();
 if (proc.exitCode !== 0) {
   console.error("scorer_mirror.py gagal:\n" + stderr);

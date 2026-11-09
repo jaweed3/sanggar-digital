@@ -10,7 +10,7 @@
     "lint": "bunx eslint",
     "typecheck": "bunx tsc --noEmit",
     "test": "bun test",
-    "golden": "bun run scripts/golden-check.ts"
+    "golden": "bun run src/scripts/golden-check.ts"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^1.1.0",
