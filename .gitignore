@@ -43,3 +43,6 @@ next-env.d.ts
 # python
 __pycache__/
 *.pyc
+
+# local score database (src/lib/server/scores.ts)
+/data/
