@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendor wasm — bukan sumber, jangan di-lint.
+    "public/wasm/**",
+    // Tooling ekstraksi (venv python + bundle JS vendor) — bukan sumber app.
+    "tools/**",
   ]),
 ]);
 

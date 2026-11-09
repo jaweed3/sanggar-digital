@@ -1,5 +1,7 @@
 import importlib.util
 import sys
+
+sys.dont_write_bytecode = True   # jangan menulis __pycache__ ke src/scripts saat mengimpor scorer_mirror
 from pathlib import Path
 
 import numpy as np
